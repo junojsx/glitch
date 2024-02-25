@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <>
-      <Button variant="destructive">Destructive</Button>
+      <p>Only authenticated users can see this</p>
     </>
   );
 }
