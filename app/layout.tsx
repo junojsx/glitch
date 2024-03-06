@@ -35,3 +35,4 @@ export default function RootLayout({
 }
 
 //1:15:53 YT
+//planetscale not free anymore :<
