@@ -18,7 +18,7 @@ export const Logo = () => {
     <div className="flex flex-col items-center">
      <h1 className={cn("text-xl font-semibold", font.className)}>Glitch</h1>
      <h2 className={cn("text-sm text-muted-foreground", font.className)}>
-      Game on!
+      GG Go Next-
      </h2>
     </div>
    </div>
