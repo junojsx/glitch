@@ -1,7 +1,10 @@
+//server component
+import { Wrapper } from "./wrapper";
+
 export const Sidebar = () => {
  return (
   <>
-   <div className="">SIDEBAR</div>
+   <Wrapper>SIDEBAR</Wrapper>
   </>
  );
 };
