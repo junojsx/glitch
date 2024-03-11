@@ -13,15 +13,13 @@ export const Logo = () => {
  return (
   <>
    <Link href="/">
-    <div className="hidden lg:flex items-center gap-x-4 hover:opacity-75 transition">
-     <div className="bg-inherit  rounded-md p-1">
+    <div className="flex items-center gap-x-4 hover:opacity-75 transition">
+     <div className="bg-inherit mr-12 lg:mr-0 shrink-0 rounded-md p-1">
       <Image src="/spooky.png" alt="Glitch Home Page" width="50" height="50" />
      </div>
-     <div className={cn(font.className)}>
-      <h1>
-       Glitch
-       <span className="text-sm text-muted-foreground"> GG Go Next-</span>{" "}
-      </h1>
+     <div className={cn("hidden lg:block", font.className)}>
+      <h1 className="text-lg">Glitch</h1>
+      <h2 className="text-sm text-muted-foreground"> GG Go Next-</h2>{" "}
      </div>
     </div>
    </Link>
