@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { Hint } from "@/components/ui/hint";
 import { useSidebar } from "@/store/use-sidebar";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 
@@ -18,13 +19,15 @@ export const Toggle = () => {
    {!collapsed && (
     <div className="p-3 pl-6 mb-2 flex items-center w-full">
      <h1>For You Page</h1>
-     <Button
-      className="h-auto p-2 ml-auto"
-      variant="ghost"
-      onClick={onCollapse}
-     >
-      <ArrowLeftFromLine className="h-4 w-4" />
-     </Button>
+     <Hint label={label} side="right" asChild>
+      <Button
+       className="h-auto p-2 ml-auto"
+       variant="ghost"
+       onClick={onCollapse}
+      >
+       <ArrowLeftFromLine className="h-4 w-4" />
+      </Button>
+     </Hint>
     </div>
    )}
   </>
