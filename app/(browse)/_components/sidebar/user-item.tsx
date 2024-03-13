@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useSidebar } from "@/store/use-sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface UserItemProps {
  username: string;
@@ -13,6 +14,7 @@ interface UserItemProps {
 
 export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
  const pathname = usePathname();
+ console.log(username);
 
  const { collapsed } = useSidebar((state) => state);
  const href = `/${username}`;
@@ -30,6 +32,16 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
      asChild
      variant="ghost"
     ></Button>
+    <Link href={href}>
+     <div
+      className={cn(
+       "flex items-center w-full gap-x-4",
+       collapsed && "justify center"
+      )}
+     >
+      <UserAvatar imageUrl={userUrl} username={username} isLive={isLive} />
+     </div>
+    </Link>
    </li>
   </>
  );
