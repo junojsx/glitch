@@ -2,6 +2,7 @@
 
 import { useSidebar } from "@/store/use-sidebar";
 import { User } from "@prisma/client";
+import { UserItem } from "./user-item";
 
 interface RecommendedProps {
  data: User[];
@@ -21,10 +22,12 @@ export const Recommended = ({ data }: RecommendedProps) => {
     )}
     <ul className="space-y-2 px-2">
      {data.map((user) => (
-      <li className="text-sm" key={user.id}>
-       {" "}
-       {user.username}
-      </li>
+      <UserItem
+       key={user.id}
+       username={user.username}
+       imageUrl={user.imageUrl}
+       isLive={true}
+      />
      ))}
     </ul>
    </div>
