@@ -16,9 +16,17 @@ export const Recommended = ({ data }: RecommendedProps) => {
    <div className="">
     {showLabel && (
      <div className="pl-6 mb-4">
-      <p className="text-sm text-muted-foreground"> Recommended</p>
+      <h2 className="text-sm text-muted-foreground"> Recommended</h2>
      </div>
     )}
+    <ul className="space-y-2 px-2">
+     {data.map((user) => (
+      <li className="text-sm" key={user.id}>
+       {" "}
+       {user.username}
+      </li>
+     ))}
+    </ul>
    </div>
   </>
  );
