@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { UserAvatar } from "@/components/ui/user-avatar";
+import { LiveBadge } from "@/components/ui/live-badge";
 
 interface UserItemProps {
  username: string;
@@ -37,18 +38,31 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
      <div
       className={cn(
        "flex items-center w-full gap-x-4",
-       collapsed && "justify center"
+       collapsed && "justify-center"
       )}
      >
       <UserAvatar
        imageUrl={imageUrl}
        username={username}
        isLive={isLive}
-       showBadge
+       //    showBadge
       />
+      {!collapsed && <h3 className="truncate"> {username}</h3>}
+      {!collapsed && isLive && <LiveBadge className="ml-auto" />}
      </div>
     </Link>
    </li>
   </>
+ );
+};
+
+export const UserItemSkeleton = () => {
+ return (
+  <li className=" flex items-center gap-x-4 px-3 py-2">
+   <Skeleton className="min-h-[32px] min-w-[32px] rounded-full" />
+   <div className="flex-1">
+    <Skeleton className="h-6" />
+   </div>
+  </li>
  );
 };
