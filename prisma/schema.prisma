@@ -24,7 +24,22 @@ model User {
   externalUserId String @unique
   bio String? @db.Text
 
+  following Follow[] @relation("Following") //create a relation back to Follow Model
+  followedBy Follow[] @relation("FollowedBy") //create a relation back to FollowedBy
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
+}
+
+model Follow {
+  id String @id @default(uuid())
+  followerId String
+  followingId String
+  follower User @relation(name: "Following", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation(name: "FollowedBy", fields: [followingId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([followerId])
+  @@index([followingId]) //to get rid of error after making relation to user model
 }
