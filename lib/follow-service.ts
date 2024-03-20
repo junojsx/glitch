@@ -55,4 +55,15 @@ export const followUser = async (id: string) => {
  if (existingFollow) {
   throw new Error("Already following!");
  }
+
+ const follow = await db.follow.create({
+  data: {
+   followerId: self.id,
+   followingId: otherUser.id,
+  },
+  include: {
+   following: true,
+   follower: true,
+  },
+ });
 };
