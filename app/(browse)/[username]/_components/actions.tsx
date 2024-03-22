@@ -6,16 +6,19 @@ import { toast } from "sonner";
 
 interface ActionsProps {
  isFollowing: boolean;
+ userId: string;
 }
 
-export const Actions = ({ isFollowing }: ActionsProps) => {
+export const Actions = ({ isFollowing, userId }: ActionsProps) => {
  const [isPending, startTransition] = useTransition(); //button disables quite quickly because we're only using console.log. but not when using setLoading.
 
  const followButtonClickHandler = () => {
   startTransition(() => {
-   onFollow("123")
-    .then(() => toast.success("Followed the user!"))
-    .catch(() => toast.error("Something went wrong."));
+   onFollow(userId)
+    .then((data) => toast.success(`You are now following ${data}`))
+    .catch((data) =>
+     toast.error(`Something went wrong with following ${data}.`)
+    );
   });
  };
  return (
