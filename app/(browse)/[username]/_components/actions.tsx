@@ -15,7 +15,9 @@ export const Actions = ({ isFollowing, userId }: ActionsProps) => {
  const followButtonClickHandler = () => {
   startTransition(() => {
    onFollow(userId)
-    .then((data) => toast.success(`You are now following ${data}`))
+    .then((data) =>
+     toast.success(`You are now following ${data.following.username}`)
+    )
     .catch((data) =>
      toast.error(`Something went wrong with following ${data}.`)
     );

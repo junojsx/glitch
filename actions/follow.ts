@@ -10,6 +10,7 @@ export const onFollow = async (id: string) => {
   if (followedUser) {
    revalidatePath(`/${followedUser.following.username}`);
   }
+  return followedUser;
  } catch {
   throw new Error("Internal Error");
  }
