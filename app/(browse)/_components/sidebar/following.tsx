@@ -1,6 +1,7 @@
 "use client";
 import { useSidebar } from "@/store/use-sidebar";
 import { Follow, User } from "@prisma/client";
+import { UserItem } from "./user-item";
 
 interface FollowingProps {
  data: (Follow & { following: User })[];
@@ -17,9 +18,19 @@ export const Following = ({ data }: FollowingProps) => {
   <div>
    {!collapsed && (
     <div className="pl-6 mb-4">
-     <p className="text-sm text-muted-foreground">Following</p>
+     <h2 className="text-sm text-muted-foreground">Following</h2>
     </div>
    )}
+   <ul className="space-y-2 px-2">
+    {data.map((follow) => (
+     <UserItem
+      key={follow.following.id}
+      username={follow.following.username}
+      imageUrl={follow.following.imageUrl}
+      isLive={true}
+     />
+    ))}
+   </ul>
   </div>
  );
 };
