@@ -65,3 +65,46 @@ export const blockUser = async (id: string) => {
  });
  return block;
 };
+
+export const unblockUser = async (id: string) => {
+ const self = await getSelf();
+
+ if (self.id === id) {
+  throw new Error("Cannot unblock yourself!");
+ }
+
+ const otherUser = await db.user.findUnique({
+  where: { id },
+ });
+
+ if (!otherUser) {
+  throw new Error("User not found!");
+ }
+
+ if (otherUser.id === self.id) {
+  throw new Error("Cannot unblock yourself!");
+ }
+
+ const existingBlock = await db.block.findUnique({
+  where: {
+   blockerId_blockedId: {
+    blockedId: otherUser.id,
+    blockerId: self.id,
+   },
+  },
+ });
+
+ if (!existingBlock) {
+  throw new Error("This user is not blocked!");
+ }
+
+ const unblock = await db.block.delete({
+  where: {
+   id: existingBlock.id,
+  },
+  include: {
+   blocked: true,
+  },
+ });
+ return unblock;
+};
