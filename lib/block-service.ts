@@ -63,4 +63,5 @@ export const blockUser = async (id: string) => {
    blocked: true,
   },
  });
+ return block;
 };
