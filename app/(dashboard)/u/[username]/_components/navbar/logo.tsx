@@ -19,10 +19,7 @@ export const Logo = () => {
      </div>
      <div className={cn("hidden lg:block", font.className)}>
       <h1 className="text-lg">Glitch</h1>
-      <h2 className="text-sm text-muted-foreground">
-       {" "}
-       Creator Dashboard-
-      </h2>{" "}
+      <h2 className="text-sm text-muted-foreground"> Creator Dashboard</h2>{" "}
      </div>
     </div>
    </Link>
