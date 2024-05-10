@@ -1,5 +1,5 @@
 const CreatorPage = () => {
- return <div>Creator Page</div>;
+ return <div>Creator</div>;
 };
 
 export default CreatorPage;
