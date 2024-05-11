@@ -13,7 +13,7 @@ export const Toggle = () => {
    {collapsed && (
     <div className="hidden lg:flex w-full items-center justify-center pt-4 mb-4">
      <Button variant="ghost" className="h-auto p-2 ml-auto" onClick={onExpand}>
-      <ArrowRightFromLine className="h-4 w-4" />
+      <ArrowRightFromLine className="h-4 w-4" aria-expanded={collapsed} />
      </Button>
     </div>
    )}
@@ -26,7 +26,7 @@ export const Toggle = () => {
        variant="ghost"
        onClick={onCollapse}
       >
-       <ArrowLeftFromLine className="h-4 w-4" />
+       <ArrowLeftFromLine className="h-4 w-4" aria-expanded={!collapsed} />
       </Button>
      </Hint>
     </div>
