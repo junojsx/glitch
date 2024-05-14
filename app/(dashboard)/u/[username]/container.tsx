@@ -14,7 +14,7 @@ export const Container = ({ children }: ContainerProps) => {
   (state) => state
  );
 
- const matches = true;
+ const matches = useMediaQuery(`(max-width: 1024px)`); //automatically collapses if user changes from desktop to mobile view.
 
  useEffect(() => {
   if (matches) {
