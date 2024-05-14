@@ -2,6 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { Fullscreen, KeyRound, MessageSquare, Users } from "lucide-react";
+import { NavItem } from "./nav-item";
 
 export const Navigation = () => {
  const pathname = usePathname();
@@ -31,11 +32,15 @@ export const Navigation = () => {
 
  return (
   <nav aria-label="User Dashboard Side Navigation">
-   <ul className="">
+   <ul className="space-y-2 px-2 pt-4 lg:pt-0">
     {routes.map((route) => (
-     <li className="" key={route.href}>
-      {route.label}
-     </li>
+     <NavItem
+      key={route.href}
+      label={route.label}
+      icon={route.icon}
+      href={route.href}
+      isActive={pathname === route.href}
+     />
     ))}
    </ul>
   </nav>
