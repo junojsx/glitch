@@ -59,7 +59,10 @@ export async function POST(req: Request) {
     externalUserId: payload.data.id,
     username: payload.data.username,
     imageUrl: payload.data.image_url, //match the image_url how it is in the documentation at clerk.com imageUrl vs image_url
-   },
+    stream: {
+        create: {name: `${payload.data.username}'s Stream`},
+    }
+},
   });
  }
 
